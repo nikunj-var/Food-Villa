@@ -19,13 +19,6 @@ import RestaurantCard from "./RestaurantCard";
 //   );
 // };
 
-const filterData = (inputValue, restaurants) => {
-  const filterdata = restaurants.filter((restaurant) => {
-    restaurant.data.name.includes(inputValue);
-  });
-  return filterdata;
-};
-
 const Body = () => {
   // React Variable-every component maintains a state and we all store the state in a variable using useState hook.
   //inputValue is a local state variable
@@ -35,6 +28,12 @@ const Body = () => {
   const [inputValue, setInputValue] = useState("");
   const [searchClicked, setSearchClicked] = useState("false");
   const [restaurants, setRestaurants] = useState(restaurantList);
+  const filterData = (inputValue, restaurants) => {
+    const filterdata = restaurants.filter((restaurant) => {
+      restaurant.data.name.includes(inputValue);
+    });
+    return filterdata;
+  };
   return (
     <>
       <div className="search-container">
