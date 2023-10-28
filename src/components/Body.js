@@ -32,7 +32,9 @@ const Body = () => {
 
   const filterData = (inputValue, restaurants) => {
     const filterdata = restaurants.filter((restaurant) => {
-      restaurant.info.name.toLowerCase().includes(inputValue.toLowerCase());
+      return restaurant.info.name
+        .toLowerCase()
+        .includes(inputValue.toLowerCase());
     });
     return filterdata;
   };
