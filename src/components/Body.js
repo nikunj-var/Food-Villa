@@ -28,7 +28,8 @@ const Body = () => {
 
   const [inputValue, setInputValue] = useState("");
   const [searchClicked, setSearchClicked] = useState("false");
-  const [restaurants, setRestaurants] = useState(restaurantList);
+  const [restaurants, setRestaurants] = useState([]);
+  const [filterdData, setFilteredData] = useState([]);
 
   const filterData = (inputValue, restaurants) => {
     const filterdata = restaurants.filter((restaurant) => {
@@ -45,6 +46,9 @@ const Body = () => {
     );
     const res = await data.json();
     setRestaurants(
+      res.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+    setFilteredData(
       res.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   }
@@ -69,14 +73,14 @@ const Body = () => {
           className="search-btn"
           onClick={() => {
             const data = filterData(inputValue, restaurants);
-            setRestaurants(data);
+            setFilteredData(data);
           }}
         >
           Search
         </button>
       </div>
       <div className="restaurant-list">
-        {restaurants.map((restaurant) => {
+        {filterdData.map((restaurant) => {
           return (
             <RestaurantCard {...restaurant.info} key={restaurant?.info?.id} />
           );
