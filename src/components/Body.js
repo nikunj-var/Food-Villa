@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { restaurantList } from "../Config";
 import RestaurantCard from "./RestaurantCard";
+import Shimmer from "./ShimmerUI";
+import { Link } from "react-router-dom";
 
 // const Body = () => {
 //   return (
@@ -25,16 +27,17 @@ const Body = () => {
   // e.target.value - whatever we write in input
   // one Way data binding
   // useState hook returns a array of variable and function to update this variable
+  // dont create component inside component
 
   const [inputValue, setInputValue] = useState("");
-  const [searchClicked, setSearchClicked] = useState("false");
+  // const [searchClicked, setSearchClicked] = useState("false");
   const [restaurants, setRestaurants] = useState([]);
   const [filterdData, setFilteredData] = useState([]);
 
   const filterData = (inputValue, restaurants) => {
     const filterdata = restaurants.filter((restaurant) => {
-      return restaurant.info.name
-        .toLowerCase()
+      return restaurant?.info?.name
+        ?.toLowerCase()
         .includes(inputValue.toLowerCase());
     });
     return filterdata;
@@ -57,8 +60,11 @@ const Body = () => {
     getRestaurants();
   }, []);
 
+  console.log(Shimmer);
   return restaurants.length === 0 ? (
-    <h1>Not present</h1>
+    <>
+      <Shimmer />
+    </>
   ) : (
     <>
       <div className="search-container">
@@ -80,9 +86,15 @@ const Body = () => {
         </button>
       </div>
       <div className="restaurant-list">
+        {/* You have to write logic for no restaurant here */}
         {filterdData.map((restaurant) => {
           return (
-            <RestaurantCard {...restaurant.info} key={restaurant?.info?.id} />
+            <Link
+              to={"/restaurant/" + restaurant.info.id}
+              key={restaurant?.info?.id}
+            >
+              <RestaurantCard {...restaurant.info} />
+            </Link>
           );
         })}
       </div>
