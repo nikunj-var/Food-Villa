@@ -1,7 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Profile = (props) => {
   const [count, setCount] = useState("0");
+  useEffect(() => {
+    console.log("render");
+    const timer = setInterval(() => {
+      console.log("calling mount");
+    }, 1000);
+    // unmounting phase
+    return () => {
+      clearInterval(timer);
+      console.log("useeffect return");
+    };
+  }, []);
   return (
     <div>
       <h1>---Functional----</h1>

@@ -15,21 +15,25 @@ class Profile extends Component {
     };
   }
   async componentDidMount() {
-    // API Calls
+    this.timer = setInterval(() => {
+      console.log("calling mount");
+    }, 1000); // API Calls
 
-    console.log(this.props.name, " Component Did Mount");
+    // console.log(this.props.name, " Component Did Mount");
 
-    const data = await fetch("https://api.github.com/users/nikunj-var");
-    const json = await data.json();
+    // const data = await fetch("https://api.github.com/users/nikunj-var");
+    // const json = await data.json();
 
-    this.setState({
-      userInfo: json,
-    });
+    // this.setState({
+    //   userInfo: json,
+    // });
+    // useEffect!=this.componentDidMount
   }
-  componentDidUpdate() {
+  componentDidUpdate(prevProps, prevstate) {
     console.log("component did update");
   }
   componentWillUnmount() {
+    clearInterval(this.timer);
     console.log("component will unmount");
   }
   render() {
@@ -71,3 +75,9 @@ export default Profile;
 // <update cycles>
 // re-render
 // component did update
+// useEffect!=this.componentDidMount
+
+// problem of a single page application is it does not reload the page , it renders the page so if we write anything in componentWillMount in function setInterval it calls it again and again ,and it will not stop if we change our page. we can avoid this by calling componentWillUnmount, then it will be a scalable operation.
+
+// Interviewer - How will you make your application scalable?
+// then give them this example

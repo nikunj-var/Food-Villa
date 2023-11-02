@@ -60,7 +60,6 @@ const Body = () => {
     getRestaurants();
   }, []);
 
-  console.log(Shimmer);
   return restaurants.length === 0 ? (
     <>
       <Shimmer />

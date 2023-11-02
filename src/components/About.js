@@ -30,9 +30,9 @@ class About extends Component {
       <>
         <h1>About Us Page</h1>
         <p> This is the Namaste React Course.</p>
-        <Profile name={"First Child"} xyz="nikunj" />
-        <Profile name={"Second Child"} xyz="nikunj" />
-        {/* <ProfileFunctional name={"Nikunj"} /> */}
+        {/* <Profile name={"First Child"} xyz="nikunj" />
+        <Profile name={"Second Child"} xyz="nikunj" /> */}
+        <ProfileFunctional name={"Nikunj"} />
       </>
     );
   }
