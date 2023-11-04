@@ -3,6 +3,7 @@ import { restaurantList } from "../Config";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./ShimmerUI";
 import { Link } from "react-router-dom";
+import { filterData } from "../utils/helper";
 
 // const Body = () => {
 //   return (
@@ -28,20 +29,14 @@ const Body = () => {
   // one Way data binding
   // useState hook returns a array of variable and function to update this variable
   // dont create component inside component
-
+  const [filterdData, setFilteredData] = useState([]);
   const [inputValue, setInputValue] = useState("");
   // const [searchClicked, setSearchClicked] = useState("false");
   const [restaurants, setRestaurants] = useState([]);
-  const [filterdData, setFilteredData] = useState([]);
 
-  const filterData = (inputValue, restaurants) => {
-    const filterdata = restaurants.filter((restaurant) => {
-      return restaurant?.info?.name
-        ?.toLowerCase()
-        .includes(inputValue.toLowerCase());
-    });
-    return filterdata;
-  };
+  useEffect(() => {
+    getRestaurants();
+  }, []);
 
   async function getRestaurants() {
     const data = await fetch(
@@ -55,10 +50,6 @@ const Body = () => {
       res.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   }
-
-  useEffect(() => {
-    getRestaurants();
-  }, []);
 
   return restaurants.length === 0 ? (
     <>

@@ -3,21 +3,8 @@ import { useParams } from "react-router-dom";
 import { IMG_CDN_URL } from "./../Config";
 const Restaurantmenu = () => {
   const { resId } = useParams();
-  const [res, setres] = useState([]);
-  useEffect(() => {
-    getRestaurantInfo();
-  }, []);
-
-  async function getRestaurantInfo() {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=27.913562&lng=78.080701&restaurantId=" +
-        resId
-    );
-    console.log("data is ", data);
-    const json = await data.json();
-    console.log(json.data);
-    setres(json);
-  }
+  
+  
   return (
     <>
       <div>
