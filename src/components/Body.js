@@ -4,6 +4,7 @@ import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./ShimmerUI";
 import { Link } from "react-router-dom";
 import { filterData } from "../utils/helper";
+import useOnline from "../utils/useOnline";
 
 // const Body = () => {
 //   return (
@@ -51,6 +52,10 @@ const Body = () => {
     );
   }
 
+  const isOnline = useOnline();
+  if (!isOnline) {
+    return <h1>Please, check your internet connection</h1>;
+  }
   return restaurants.length === 0 ? (
     <>
       <Shimmer />
