@@ -85,14 +85,14 @@ const RestaurantCard = ({
   name,
   cuisines,
   cloudinaryImageId,
-  lastMileTravelString,
+  totalRatingsString,
 }) => {
   return (
-    <div className="card">
+    <div className="card text-ellipsis">
       <img src={IMG_CDN_URL + cloudinaryImageId} />
       <h2>{name}</h2>
       <h3>{cuisines}</h3>
-      <h4>{lastMileTravelString} minutes</h4>
+      <h4>{totalRatingsString} stars</h4>
     </div>
   );
 };

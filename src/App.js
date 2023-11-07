@@ -14,7 +14,6 @@ import Header from "./components/Header";
 // named import
 import { Title } from "./components/Header";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
-import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/ErrorPage";
 import Restaurantmenu from "./components/RestaurantMenu";

@@ -56,6 +56,7 @@ const Body = () => {
   if (!isOnline) {
     return <h1>Please, check your internet connection</h1>;
   }
+
   return restaurants.length === 0 ? (
     <>
       <Shimmer />
