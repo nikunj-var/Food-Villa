@@ -66,13 +66,14 @@ const Body = () => {
       <div className="search-container">
         <input
           type="text"
-          placeholder="search"
+          placeholder=" Search"
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
+          className="p-1 my-5 border rounded w-11/12 ml-5"
         />
 
         <button
-          className="search-btn"
+          className="p-1 inline bg-gray-200 rounded ml-5"
           onClick={() => {
             const data = filterData(inputValue, restaurants);
             setFilteredData(data);
@@ -81,7 +82,7 @@ const Body = () => {
           Search
         </button>
       </div>
-      <div className="restaurant-list">
+      <div className=" flex flex-wrap justify-between  ">
         {/* You have to write logic for no restaurant here */}
         {filterdData.map((restaurant) => {
           return (

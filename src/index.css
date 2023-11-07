@@ -1,4 +1,4 @@
-.header{
+/* .header{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -22,12 +22,6 @@
     text-overflow: ellipsis;
     text-align: center;
 }
-/* .card h2{
-    text-overflow: ellipsis;
-}
-.card h3{
-    text-overflow: ellipsis;
-} */
 .card > img{
     width: 100%;
     height:300px;
@@ -49,4 +43,8 @@
     margin:10px;
     background-color: #ccc;
     height: 200px;
-}
+} */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

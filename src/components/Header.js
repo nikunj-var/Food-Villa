@@ -5,7 +5,7 @@ export const Title = () => (
   <h1 id="Title" key="h1">
     <img
       src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMkML6BRWil3kliTdFT-6LYBEeRsnkd_hmMNAowM3oalP-VbwLnT7vvG70rlP2_gcxbd0&usqp=CAU"
-      className="logo"
+      className="h-28 p-2"
     />
   </h1>
 );
@@ -13,24 +13,24 @@ const Header = () => {
   const [title, setTitle] = useState("Food Villa");
   const [isLoggedIn, setLoggedIn] = useState(true);
   return (
-    <div className="header">
+    <div className="flex justify-between shadow-lg">
       <Title />
 
-      <div className="nav-items">
-        <ul>
-          <li>
+      <div>
+        <ul className="flex py-10">
+          <li className="px-2">
             {" "}
             <Link to="/">Home</Link>
           </li>
-          <li>
+          <li className="px-2">
             <Link to="/about">About</Link>
           </li>
 
-          <li>
+          <li className="px-2">
             {" "}
             <Link to="/contact">Contact</Link>
           </li>
-          <li>
+          <li className="px-2">
             <Link to="/instamart">Instamart</Link>
           </li>
         </ul>
