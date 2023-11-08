@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { LOGO_IMG_URL } from "../Config";
+
 
 export const Title = () => (
   <h1 id="Title" key="h1">
     <img
-      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMkML6BRWil3kliTdFT-6LYBEeRsnkd_hmMNAowM3oalP-VbwLnT7vvG70rlP2_gcxbd0&usqp=CAU"
+      src={LOGO_IMG_URL}
       className="h-28 p-2"
     />
   </h1>

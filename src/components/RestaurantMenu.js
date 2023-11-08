@@ -5,28 +5,28 @@ import useRestaurantMenu from "../utils/useRestaurantMenu";
 import Shimmer from "./ShimmerUI";
 const Restaurantmenu = () => {
   const { resId } = useParams();
-  const res = useRestaurantMenu(resId);
-  return !res ? (
+  const [restaurant, menuitem] = useRestaurantMenu(resId);
+  return !restaurant ? (
     <Shimmer />
   ) : (
     <>
-      <div>
-        <h1>Restaurant id : {resId}</h1>
-        <h2>Data is {res?.name}</h2>
-        <img src={IMG_CDN_URL + res.cloudinaryImageId} />
-        <h4>{res.city}</h4>
-        <h4>{res.costForTwo}</h4>
+      <div className="text-center">
+        <h1 className="font-bold text-2xl my-10">
+          {" "}
+          {restaurant?.name} (ID : {resId})
+        </h1>
+        <p className="font-bold text-lg">{restaurant?.cuisines?.join(",")}</p>
+        {categories.map(() => {})}
       </div>
-      {/* <div>
+      
+      <div className="menu-container">
         <h1>Menu</h1>
         <ul>
-          {Object.values(
-            res.data?.cards[0]?.card?.card?.info?.menu?.items
-          )?.map((item) => (
-            <li key={item?.id}>{item?.name}</li>
+          {menuitem.map((item) => (
+            <li key={item?.card?.info?.id}>{item?.card?.info?.name}</li>
           ))}
         </ul>
-      </div> */}
+      </div>
     </>
   );
 };
