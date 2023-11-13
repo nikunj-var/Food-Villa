@@ -4,7 +4,7 @@ import { FETCH_MENU_URL } from "../Config";
 const useRestaurantMenu = (resId) => {
   const [restaurant, setRestaurant] = useState([]);
   const [menuitem, setMenuItem] = useState([]);
-
+  const [categories, setCategories] = useState([]);
   useEffect(() => {
     getRestaurantInfo();
   }, []);
@@ -18,7 +18,7 @@ const useRestaurantMenu = (resId) => {
     const obj =
       res.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
         ?.card;
-    console.log("obj = ", obj);
+
     const menuData =
       "itemCards" in obj
         ? res.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
@@ -26,8 +26,20 @@ const useRestaurantMenu = (resId) => {
         : res.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
             ?.card.itemCards;
     setMenuItem(menuData);
+
+    const categories =
+      res.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+        (c) => {
+          return (
+            c.card?.["card"]?.["@type"] ===
+            "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+          );
+        }
+      );
+
+    setCategories(categories);
   }
   //   return restaurant data
-  return [restaurant, menuitem];
+  return [restaurant, menuitem, categories];
 };
 export default useRestaurantMenu;

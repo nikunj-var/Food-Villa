@@ -3,32 +3,35 @@ import { useParams } from "react-router-dom";
 import { IMG_CDN_URL } from "./../Config";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import Shimmer from "./ShimmerUI";
+import RestaurantCategory from "./RestaurantCategories";
 const Restaurantmenu = () => {
   const { resId } = useParams();
-  const [restaurant, menuitem] = useRestaurantMenu(resId);
+  const [restaurant, menuitem, categories] = useRestaurantMenu(resId);
   return !restaurant ? (
     <Shimmer />
   ) : (
-    <>
+    <div className=" text-center">
       <div className="text-center">
-        <h1 className="font-bold text-2xl my-10">
+        <h1 className="font-bold text-2xl my-10 underline underline-offset-8 ">
           {" "}
           {restaurant?.name} (ID : {resId})
         </h1>
         <p className="font-bold text-lg">{restaurant?.cuisines?.join(",")}</p>
-        {categories.map(() => {})}
       </div>
-      
+
       <div className="menu-container">
-        <h1>Menu</h1>
-        <ul>
-          {menuitem.map((item) => (
-            <li key={item?.card?.info?.id}>{item?.card?.info?.name}</li>
-          ))}
-        </ul>
+        {categories.map((category) => (
+          <RestaurantCategory data={category?.card?.card} />
+        ))}
       </div>
-    </>
+    </div>
   );
 };
 
 export default Restaurantmenu;
+
+{/* <ul>
+{menuitem.map((item) => (
+  <li key={item?.card?.info?.id}>{item?.card?.info?.name}</li>
+))}
+</ul> */}
