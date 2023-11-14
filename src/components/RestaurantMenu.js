@@ -21,7 +21,10 @@ const Restaurantmenu = () => {
 
       <div className="menu-container">
         {categories.map((category) => (
-          <RestaurantCategory data={category?.card?.card} />
+          <RestaurantCategory
+            key={category?.card?.card?.title}
+            data={category?.card?.card}
+          />
         ))}
       </div>
     </div>
@@ -30,8 +33,10 @@ const Restaurantmenu = () => {
 
 export default Restaurantmenu;
 
-{/* <ul>
+{
+  /* <ul>
 {menuitem.map((item) => (
   <li key={item?.card?.info?.id}>{item?.card?.info?.name}</li>
 ))}
-</ul> */}
+</ul> */
+}
