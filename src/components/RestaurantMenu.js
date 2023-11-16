@@ -7,6 +7,7 @@ import RestaurantCategory from "./RestaurantCategories";
 const Restaurantmenu = () => {
   const { resId } = useParams();
   const [restaurant, menuitem, categories] = useRestaurantMenu(resId);
+  const [showIndex, setShowIndex] = useState(null);
   return !restaurant ? (
     <Shimmer />
   ) : (
@@ -20,10 +21,15 @@ const Restaurantmenu = () => {
       </div>
 
       <div className="menu-container">
-        {categories.map((category) => (
+        {categories.map((category, index) => (
+          // controlled component
           <RestaurantCategory
             key={category?.card?.card?.title}
             data={category?.card?.card}
+            showitems={index === showIndex ? true : false}
+            setShowIndex={() => setShowIndex(index)}
+            // to show only first item
+            // showitems={index === 0 && true}
           />
         ))}
       </div>
@@ -40,3 +46,6 @@ export default Restaurantmenu;
 ))}
 </ul> */
 }
+
+// lifting the state in react up
+// controlled and uncontrolled component

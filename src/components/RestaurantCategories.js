@@ -1,10 +1,10 @@
 import { useState } from "react";
 import ItemList from "./ItemList";
 
-const RestaurantCategory = ({ data }) => {
-  const [showitems, setShowitems] = useState(false);
+// controlled component
+const RestaurantCategory = ({ data, showitems, setShowIndex }) => {
   const handleClick = () => {
-    showitems ? setShowitems(false) : setShowitems(true);
+    setShowIndex();
   };
   return (
     <>
