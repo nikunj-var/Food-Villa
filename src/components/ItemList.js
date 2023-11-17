@@ -1,5 +1,5 @@
 import { IMG_CDN_URL } from "../Config";
-const ItemList = ({ items }) => {
+const ItemList = ({ items, dummy }) => {
   return (
     <div>
       {items.map((item) => (
@@ -18,7 +18,9 @@ const ItemList = ({ items }) => {
           </div>
           <div className="w-3/12">
             <div className=" absolute">
-              <button className="p-2 bg-gray-200 shadow-2xl rounded-sm">Add +</button>
+              <button className="p-2 bg-gray-200 shadow-2xl rounded-sm">
+                Add +
+              </button>
             </div>
             <img src={IMG_CDN_URL + item.card.info.imageId} />
           </div>

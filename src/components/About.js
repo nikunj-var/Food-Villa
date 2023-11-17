@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import Profile from "./ProfileClass";
 import ProfileFunctional from "./Profile";
+import userContext from "../utils/userContext";
 import { Component } from "react";
 const About2 = () => {
   return (
@@ -29,6 +30,12 @@ class About extends Component {
     return (
       <>
         <h1>About Us Page</h1>
+        <div>
+          loggedInUser
+          <userContext.Consumer>
+            {({loggedInUser}) => <h1 className="text-bold">{loggedInUser}</h1>}
+          </userContext.Consumer>
+        </div>
         <p> This is the Namaste React Course.</p>
         {/* <Profile name={"First Child"} xyz="nikunj" />
         <Profile name={"Second Child"} xyz="nikunj" /> */}

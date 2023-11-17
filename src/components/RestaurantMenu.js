@@ -8,6 +8,7 @@ const Restaurantmenu = () => {
   const { resId } = useParams();
   const [restaurant, menuitem, categories] = useRestaurantMenu(resId);
   const [showIndex, setShowIndex] = useState(null);
+  const dummy = "hello i am dummy";
   return !restaurant ? (
     <Shimmer />
   ) : (
@@ -28,6 +29,7 @@ const Restaurantmenu = () => {
             data={category?.card?.card}
             showitems={index === showIndex ? true : false}
             setShowIndex={() => setShowIndex(index)}
+            dummy={dummy}
             // to show only first item
             // showitems={index === 0 && true}
           />
@@ -47,5 +49,11 @@ export default Restaurantmenu;
 </ul> */
 }
 
+// lecture11
+
 // lifting the state in react up
 // controlled and uncontrolled component
+// problem of passing props
+// react context
+// first way to use context is to use hooks - createContext,useContext
+// second way to use context is to use components - <userContext.Consumer></userContext.Consumer>

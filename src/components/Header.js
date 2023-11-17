@@ -1,19 +1,19 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { LOGO_IMG_URL } from "../Config";
-
+import userContext from "../utils/userContext";
 
 export const Title = () => (
   <h1 id="Title" key="h1">
-    <img
-      src={LOGO_IMG_URL}
-      className="h-28 p-2"
-    />
+    <img src={LOGO_IMG_URL} className="h-28 p-2" />
   </h1>
 );
 const Header = () => {
   const [title, setTitle] = useState("Food Villa");
   const [isLoggedIn, setLoggedIn] = useState(true);
+  const { loggedInUser, contact } = useContext(userContext);
+  console.log("contact = ", contact);
+  console.log("loggesIn", loggedInUser);
   return (
     <div className="flex justify-between shadow-lg">
       <Title />
@@ -35,6 +35,8 @@ const Header = () => {
           <li className="px-2">
             <Link to="/instamart">Instamart</Link>
           </li>
+          <li className="px-2">{loggedInUser}</li>
+          <li className="px-2">{contact}</li>
         </ul>
       </div>
       {

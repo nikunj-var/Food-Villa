@@ -3,12 +3,12 @@
 // const container = React.createElement("div", {}, [heading, heading2]);
 // const root = ReactDOM.createRoot(document.getElementById("root"));
 
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Body from "./components/Body";
 import Footer from "./components/Footer";
 import "./index.css";
-
+import userContext from "./utils/userContext";
 // default import
 import Header from "./components/Header";
 // named import
@@ -96,13 +96,29 @@ import Shimmer from "./components/ShimmerUI";
 const Instamart = lazy(() => import("./components/Instamart"));
 const About = lazy(() => import("./components/About"));
 const AppLayout = () => {
+  // authentication
+  const [userName, setUserName] = useState();
+  const [userPhone, setUserPhone] = useState();
+  useEffect(() => {
+    // make an api call and send username and password
+    const data = {
+      name: "Nikunj",
+      number: "8267083859",
+    };
+    setUserName(data.name);
+    setUserPhone(data.number);
+  }, []);
   return (
     //fragment in react
-    <>
-      <Header />
-      <Outlet />
-      <Footer />
-    </>
+    <userContext.Provider
+      value={{ loggedInUser: userName, contact: userPhone }}
+    >
+      <>
+        <Header />
+        <Outlet />
+        <Footer />
+      </>
+    </userContext.Provider>
   );
 };
 const appRouter = createBrowserRouter([
