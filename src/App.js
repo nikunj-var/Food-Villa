@@ -111,7 +111,7 @@ const AppLayout = () => {
   return (
     //fragment in react
     <userContext.Provider
-      value={{ loggedInUser: userName, contact: userPhone }}
+      value={{ loggedInUser: userName, contact: userPhone,setUserName }}
     >
       <>
         <Header />

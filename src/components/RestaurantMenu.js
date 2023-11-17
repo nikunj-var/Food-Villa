@@ -57,3 +57,8 @@ export default Restaurantmenu;
 // react context
 // first way to use context is to use hooks - createContext,useContext
 // second way to use context is to use components - <userContext.Consumer></userContext.Consumer>
+//  <userContext.Producer>
+
+// lecture 12
+
+// Redux - 

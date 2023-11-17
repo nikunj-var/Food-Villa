@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./ShimmerUI";
 import { Link } from "react-router-dom";
@@ -6,6 +6,7 @@ import { filterData } from "../utils/helper";
 import useOnline from "../utils/useOnline";
 import { withPromotedLabel } from "./RestaurantCard";
 import useRestaurant from "../utils/useRestaurant";
+import userContext from "../utils/userContext";
 
 const Body = () => {
   const [filterdData, setFilteredData] = useState([]);
@@ -21,6 +22,7 @@ const Body = () => {
   if (!isOnline) {
     return <h1>Please, check your internet connection</h1>;
   }
+  const { loggedInUser, setUserName } = useContext(userContext);
 
   return restaurants.length === 0 ? (
     <>
@@ -47,6 +49,15 @@ const Body = () => {
         >
           Search
         </button>
+      </div>
+      <div>
+        <label>Username : </label>
+        <input
+          className="border border-black"
+          placeholder="enter your data"
+          value={loggedInUser}
+          onChange={(e) => setUserName(e.target.value)}
+        />
       </div>
       <div className=" flex flex-wrap justify-between  ">
         {/* You have to write logic for no restaurant here */}
