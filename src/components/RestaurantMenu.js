@@ -4,6 +4,7 @@ import { IMG_CDN_URL } from "./../Config";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import Shimmer from "./ShimmerUI";
 import RestaurantCategory from "./RestaurantCategories";
+
 const Restaurantmenu = () => {
   const { resId } = useParams();
   const [restaurant, menuitem, categories] = useRestaurantMenu(resId);
@@ -61,4 +62,17 @@ export default Restaurantmenu;
 
 // lecture 12
 
-// Redux - 
+// Redux - It works on data layeer.
+// It is not mandatory.
+// It is use in very huge applications.
+// It makes application to debug easily.
+
+// Difference between Redux and React?
+// Read Zustand do samething as Redux.
+
+// redux toolkit
+// Redux store is a js object with a lot of data inside it and it is kept in a global central place.
+// Redux toolkit solve three main problems of vanilla redux.
+// must read redux documentation.
+// redux store is divided into multiple slices.
+// logical partition are known as slices.
