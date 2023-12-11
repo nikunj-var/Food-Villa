@@ -76,3 +76,4 @@ export default Restaurantmenu;
 // must read redux documentation.
 // redux store is divided into multiple slices.
 // logical partition are known as slices.
+// selector is a hook inside react.

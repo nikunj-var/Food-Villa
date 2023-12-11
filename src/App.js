@@ -19,6 +19,9 @@ import Error from "./components/ErrorPage";
 import Restaurantmenu from "./components/RestaurantMenu";
 import Profile from "./components/Profile";
 import Shimmer from "./components/ShimmerUI";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
+import Cart from "./components/Cart";
 
 // config file
 // const config = [
@@ -110,14 +113,17 @@ const AppLayout = () => {
   }, []);
   return (
     //fragment in react
+
     <userContext.Provider
-      value={{ loggedInUser: userName, contact: userPhone,setUserName }}
+      value={{ loggedInUser: userName, contact: userPhone, setUserName }}
     >
-      <>
-        <Header />
-        <Outlet />
-        <Footer />
-      </>
+      <Provider store={appStore}>
+        <>
+          <Header />
+          <Outlet />
+          <Footer />
+        </>
+      </Provider>
     </userContext.Provider>
   );
 };
@@ -160,6 +166,11 @@ const appRouter = createBrowserRouter([
             <Instamart />
           </Suspense>
         ),
+      },
+      ,
+      {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
   },
