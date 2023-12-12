@@ -88,8 +88,8 @@ const RestaurantCard = ({
   totalRatingsString,
 }) => {
   return (
-    <div className="card text-ellipsis w-[350px] p-2 m-2 shadow-lg bg-white">
-      <img src={IMG_CDN_URL + cloudinaryImageId} />
+    <div className="card text-ellipsis h-[500px] w-[350px] p-2 m-2 shadow-lg bg-white">
+      <img className=" h-[350px] w-[350px]" src={IMG_CDN_URL + cloudinaryImageId} />
       <h2 className=" font-bold text-xl">{name}</h2>
       <h3>{cuisines.join(", ")}</h3>
       <h4 className=" overflow-auto">{totalRatingsString} stars</h4>

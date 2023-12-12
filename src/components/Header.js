@@ -46,7 +46,7 @@ const Header = () => {
             </Link>
           </li>
           <li className="px-2">{loggedInUser}</li>
-          <li className="px-2">{contact}</li>
+          {/* <li className="px-2">{contact}</li> */}
         </ul>
       </div>
       {
